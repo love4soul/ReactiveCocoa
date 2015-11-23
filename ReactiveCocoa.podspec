@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
     sp.private_header_files = '**/*Private.h', '**/*EXTRuntimeExtensions.h'
     sp.exclude_files = 'ReactiveCocoaFramework/ReactiveCocoa/RACObjCRuntime.{h,m}'
     sp.ios.exclude_files = '**/*{AppKit,NSControl,NSText}*'
-    sp.tvos.exclude_files = '**/*{AppKit,NSControl,NSText,MK,UIAlert,UIActionSheet}*'
+    sp.tvos.exclude_files = '**/*{AppKit,NSControl,NSText,MK,UIAlert,UIActionSheet,UIDate}*'
     sp.osx.exclude_files = '**/*{UIActionSheet,UIAlertView,UIBarButtonItem,UIButton,UICollectionReusableView,UIControl,UIDatePicker,UIGestureRecognizer,UIRefreshControl,UISegmentedControl,UISlider,UIStepper,UISwitch,UITableViewCell,UITableViewHeaderFooterView,UIText}*'
     sp.header_dir = 'ReactiveCocoa'
   end
