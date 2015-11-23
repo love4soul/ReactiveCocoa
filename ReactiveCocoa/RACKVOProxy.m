@@ -11,7 +11,12 @@
 @interface RACKVOProxy()
 
 @property (strong, nonatomic, readonly) NSMapTable *trampolines;
-@property (strong, nonatomic, readonly) dispatch_queue_t queue;
+#if OS_OBJECT_USE_OBJC
+@property (nonatomic, strong, readonly) dispatch_queue_t queue;
+#else
+// Swift builds with OS_OBJECT_HAVE_OBJC_SUPPORT=0 for Playgrounds and LLDB :(
+@property (nonatomic, assign, readonly) dispatch_queue_t queue;
+#endif
 
 @end
 
