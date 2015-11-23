@@ -24,6 +24,12 @@ Pod::Spec.new do |s|
     sp.requires_arc = false
   end
 
+  s.prepare_command = <<-'END'
+      find . \( -regex '.*EXT.*\.[mh]$' -o -regex '.*metamacros\.[mh]$' \) -execdir mv {} RAC{} \;
+      find . -regex '.*\.[hm]' -exec sed -i '' -E 's@"(EXT.*|metamacros)\.h"@"RAC\1.h"@' {} \;
+      find . -regex '.*\.[hm]' -exec sed -i '' -E 's@<ReactiveCocoa/(EXT.*)\.h>@<ReactiveCocoa/RAC\1.h>@' {} \;
+    END
+
   s.subspec 'Core' do |sp|
     sp.dependency 'ReactiveCocoa/no-arc'
     sp.source_files = 'ReactiveCocoaFramework/ReactiveCocoa/**/*.{h,m}'
@@ -31,15 +37,6 @@ Pod::Spec.new do |s|
     sp.ios.exclude_files = '**/*{AppKit,NSControl,NSText}*'
     sp.tvos.exclude_files = '**/*{AppKit,NSControl,NSText}*'
     sp.osx.exclude_files = '**/*{UIActionSheet,UIAlertView,UIBarButtonItem,UIButton,UIControl,UIGestureRecognizer,UIText}*'
-    
-    sp.pre_install do |pod, _|
-      pod.source_files.each { |source|
-        contents = source.read
-        if contents.gsub!(%r{\"(EXT\w+|metamacros)\.h}, '"ReactiveCocoa/\1.h')
-          File.open(source, 'w') { |file| file.puts(contents) }
-        end
-      }
-    end
   end
 
   s.subspec 'RACExtensions' do |sp|
