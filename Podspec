@@ -9,7 +9,8 @@
     "Igors Nemenonoks":"ios@chi.lv"
   },
   "source": {
-    "git": "https://github.com/love4soul/ReactiveCocoa.git"
+    "git": "https://github.com/love4soul/ReactiveCocoa.git",
+    "branch":"2.5_tvos"
   },
   "license": {
     "type": "MIT",
@@ -57,6 +58,9 @@
         "exclude_files": "ReactiveCocoa/*{UI,MK}*"
       },
       "ios": {
+        "exclude_files": "ReactiveCocoa/*{AppKit,NSControl,NSText}*"
+      },
+      "tvos": {
         "exclude_files": "ReactiveCocoa/*{AppKit,NSControl,NSText}*"
       }
     }
