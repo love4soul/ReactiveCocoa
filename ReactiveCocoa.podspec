@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   END
 
   s.subspec 'no-arc' do |sp|
-    sp.source_files = 'ReactiveCocoaFramework/ReactiveCocoa/RACObjCRuntime.{h,m}'
+    sp.source_files = 'ReactiveCocoa/RACObjCRuntime.{h,m}'
     sp.requires_arc = false
   end
 
